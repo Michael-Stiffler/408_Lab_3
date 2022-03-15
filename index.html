@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CIS 408 Project 3</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/p3.css" />
+  <script src="scripts/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.js"></script>
+</head>
+
+<body>
+  <h1>Clickable Dropdown</h1>
+  <p>Click on the button to open the dropdown menu.</p>
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
+        <a href="#" onclick="showName()">NAME</a>
+        <a href="#" onclick="showAdress()">ADDRESS</a>
+        <a href="#" onclick="showHours()">BUSINESS HOURS</a>
+        <a href="#" onclick="showMenu()">MENU</a>
+        <a href="#" onclick="showServicesAndFeatures()">SERVICES and FEATURES</a>
+    </div>
+   </div>
+
+   <div class="items">
+    <div class="item-1">
+        <h3>Name:</h3>
+        <p id="name"></p>
+    </div>
+    <div class="item-2">
+        <h3>Full Address:</h3>
+        <p  id="address"></p>
+    </div>
+    <div class="item-3">
+        <h3>Hours:</h3>
+        <p id="Monday"></p>
+        <p id="Tuesday"></p>
+        <p id="Wednesday"></p>
+        <p id="Thursday"></p>
+        <p id="Friday"></p>
+        <p id="Saturday"></p>
+        <p id="Sunday"></p>
+    </div>
+    <div class="item-4">
+        <h3>Menu:</h3>
+        <p id="menu"></p>
+    </div>
+    <div class="item-5">
+        <h1 id="s&f">Services And Features:</h1>
+    </div>
+   </div>
+</body>
+<html>
