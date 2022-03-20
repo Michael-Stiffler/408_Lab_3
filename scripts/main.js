@@ -82,20 +82,54 @@ let myObj = {
     "type": "business"
 }
 
+let nameShown = false
+let addressShown = false
+let hoursShown= false
+let menuShown = false
+let sfShown = false
+
+
 function showName() {
     let name = document.getElementById("name");
-    let restaurant = JSON.parse(JSON.stringify(myObj));
-    name.textContent = restaurant["name"]
+    let nameDiv = document.getElementsByClassName("item-1")[0]
+
+    if(nameShown){
+      name.style.display = "none";
+      nameDiv.style.display = "none";
+      nameShown = false;
+    }
+    else{
+      let restaurant = JSON.parse(JSON.stringify(myObj));
+      name.textContent = restaurant["name"]
+      name.style.display = "block";
+      nameDiv.style.display = "block";
+      nameShown = true;
+    }
 
 }
 
 function showAdress() {
-    let name = document.getElementById("address");
-    let restaurant = JSON.parse(JSON.stringify(myObj));
-    name.textContent = restaurant["full_address"]
+    let address = document.getElementById("address");
+    let addressDiv = document.getElementsByClassName("item-2")[0]
+
+    if(addressShown){
+      address.style.display = "none";
+      addressDiv.style.display = "none";
+      addressShown = false;
+    }
+    else{
+      let restaurant = JSON.parse(JSON.stringify(myObj));
+      address.textContent = restaurant["full_address"]
+      address.style.display = "block";
+      addressDiv.style.display = "block";
+      addressShown = true;
+    }
 }
 
 function showHours() {
+    let hoursDiv = document.getElementsByClassName("item-3")[0]
+
+
     let restaurant = JSON.parse(JSON.stringify(myObj));
     let cleaned_hours = {
         "Monday": {"close": "Closed", "open": "Closed"},
@@ -109,6 +143,11 @@ function showHours() {
 
     let hours = restaurant["hours"]
 
+    if(hoursShown){
+      hoursDiv.style.display = "none";
+      hoursShown = false;
+    } else{
+
     for(day in hours){
         cleaned_hours[day].close = convertToStandard(hours[day].close).toLowerCase()
         cleaned_hours[day].open = convertToStandard(hours[day].open).toLowerCase()
@@ -117,13 +156,26 @@ function showHours() {
     for(day in cleaned_hours){
         document.getElementById(day).textContent = day + "\t\t" + cleaned_hours[day].open + " - " + cleaned_hours[day].close
     }
+    hoursDiv.style.display = "block";
+    hoursShown = true;
+  }
 }
 
 function showMenu() {
+  let menuDiv = document.getElementsByClassName("item-4")[0]
+
+  if(menuShown){
+    menuDiv.style.display = "none";
+    menuShown = false;
+  }else {
+    menuDiv.style.display = "block";
+    menuShown = true;
+  }
     
 }
 
 function showServicesAndFeatures() {
+    let sfDiv = document.getElementsByClassName("item-5")[0]
     let restaurant = JSON.parse(JSON.stringify(myObj));
     let attributes = restaurant["attributes"]
 
@@ -146,16 +198,18 @@ function showServicesAndFeatures() {
 
     let attributsElement = document.getElementById("s&f")
 
+    if(sfShown){
+      sfDiv.style.display = "none";
+      sfShown = false;
+    } else {
     for(let x = text.length; x > 0; x--){
         const p = document.createElement("p");
         p.textContent = text[x];
         attributsElement.parentNode.insertBefore(p, attributsElement.nextSibling)
     }
-}
-
-function unshowMenu(){
-    let elements = document.getElementsByClassName("dropdown-content");
-    elements[0].style.display = "none";
+    sfDiv.style.display = "block";
+    sfShown = true;
+  }
 }
 
 function convertToStandard(time) {
