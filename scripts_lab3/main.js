@@ -87,6 +87,7 @@ let addressShown = false
 let hoursShown= false
 let menuShown = false
 let sfShown = false
+let parsed = false;
 
 
 function showName() {
@@ -181,19 +182,22 @@ function showServicesAndFeatures() {
 
     let text = []
 
-    for(item in attributes){
-        if(attributes[item] instanceof Object){
-            for(subitem in attributes[item]){
-                if(attributes[item][subitem] == true){
-                    text.push(item + " " + subitem);
-                }
-            }
-        }
-        else{
-            if(attributes[item] == true){
-                text.push(item);
-            }
-        }
+    if(!parsed){
+      for(item in attributes){
+          if(attributes[item] instanceof Object){
+              for(subitem in attributes[item]){
+                  if(attributes[item][subitem] == true){
+                      text.push(item + " " + subitem);
+                  }
+              }
+          }
+          else{
+              if(attributes[item] == true){
+                  text.push(item);
+              }
+          }
+      }
+      parsed = true;
     }
 
     let attributsElement = document.getElementById("s&f")
